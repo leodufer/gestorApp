@@ -22,6 +22,7 @@ public class ClientePresenter {
     }
 
     public void obtenerCliente(){
+        clienteView.showProgress();
         RestAdapter restAdapter = new RestAdapter.Builder()
                                     .setEndpoint("https://safe-forest.herokuapp.com")
                                     .build();
@@ -31,12 +32,14 @@ public class ClientePresenter {
         servicio.obtenerClientes(new Callback<List<Cliente>>() {
             @Override
             public void success(List<Cliente> clientes, Response response) {
-               clienteView.showClientes(clientes);
+                clienteView.goneProgress();
+                clienteView.showClientes(clientes);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 clienteView.showError(error.getLocalizedMessage());
+                clienteView.goneProgress();
             }
         });
     }

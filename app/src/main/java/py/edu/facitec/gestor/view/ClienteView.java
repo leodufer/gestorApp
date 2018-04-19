@@ -11,4 +11,8 @@ import py.edu.facitec.gestor.model.Cliente;
 public interface ClienteView {
     void showClientes(List<Cliente> clientes);
     void showError(String mensaje);
+    void showProgress();
+    void goneProgress();
+    void showEmptyState();
+
 }
