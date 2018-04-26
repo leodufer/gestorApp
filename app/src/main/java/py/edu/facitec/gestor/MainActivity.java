@@ -1,5 +1,7 @@
 package py.edu.facitec.gestor;
 
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import java.util.List;
 
 import py.edu.facitec.gestor.model.Cliente;
 import py.edu.facitec.gestor.presenter.ClientePresenter;
+import py.edu.facitec.gestor.view.AgregarClienteActivity;
 import py.edu.facitec.gestor.view.ClienteAdapter;
 import py.edu.facitec.gestor.view.ClienteView;
 
@@ -29,8 +32,14 @@ public class MainActivity extends AppCompatActivity implements ClienteView{
         progressBar = findViewById(R.id.progressBar);
 
         presenter=new ClientePresenter(this);
-        presenter.obtenerCliente();
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.obtenerCliente();
     }
 
     @Override
@@ -49,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements ClienteView{
     @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
+        clientesListView.setVisibility(View.GONE);
     }
 
     @Override
@@ -61,7 +71,13 @@ public class MainActivity extends AppCompatActivity implements ClienteView{
 
     }
 
+    @Override
+    public void showSuccess() {
+
+    }
+
     public void agregarCliente(View view){
-        Toast.makeText(this,"Click Add",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, AgregarClienteActivity.class);
+        startActivity(intent);
     }
 }

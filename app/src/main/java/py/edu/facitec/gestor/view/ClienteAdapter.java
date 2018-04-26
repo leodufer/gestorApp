@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import py.edu.facitec.gestor.R;
 import py.edu.facitec.gestor.model.Cliente;

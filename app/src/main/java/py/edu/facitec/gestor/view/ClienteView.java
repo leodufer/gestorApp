@@ -14,5 +14,6 @@ public interface ClienteView {
     void showProgress();
     void goneProgress();
     void showEmptyState();
+    void showSuccess();
 
 }
